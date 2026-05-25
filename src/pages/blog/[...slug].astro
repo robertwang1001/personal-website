@@ -5,27 +5,27 @@ import Container from '@components/Container.astro'
 import FormattedDate from '@components/FormattedDate.astro'
 import PageLayout from '@layouts/PageLayout.astro'
 import { readingTime } from '@lib/utils'
-import { getCollection } from 'astro:content'
+import { getCollection, render } from 'astro:content'
 
 export async function getStaticPaths() {
   const posts = (await getCollection('blog'))
     .filter(post => (import.meta.env.PROD ? !post.data.draft : true))
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   return posts.map(post => ({
-    params: { slug: post.slug },
+    params: { slug: post.id },
     props: post,
   }))
 }
 type Props = CollectionEntry<'blog'>
 
 const post = Astro.props
-const { Content } = await post.render()
+const { Content } = await render(post)
 
 // Get the next and prev entries
 const items = (await getCollection('blog'))
   .filter(post => (import.meta.env.PROD ? !post.data.draft : true))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-const index = items.findIndex(x => x.slug === post.slug)
+const index = items.findIndex(x => x.id === post.id)
 const prev = index - 1 >= 0 ? items[index - 1] : null
 const next = index + 1 < items.length ? items[index + 1] : null
 ---
@@ -42,7 +42,7 @@ const next = index + 1 < items.length ? items[index + 1] : null
         </div>
         &bull;
         <div class="font-base text-sm">
-          {readingTime(post.body)}
+          {post.body ? readingTime(post.body) : 'Unknown'}
         </div>
         {
           post.data.draft && (
@@ -63,13 +63,11 @@ const next = index + 1 < items.length ? items[index + 1] : null
     <article class="animate">
       <Content />
     </article>
-    <div
-      class="animate mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4"
-    >
+    <div class="animate mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4">
       {
         prev && (
           <a
-            href={`/${prev.collection}/${prev.slug}`}
+            href={`/${prev.collection}/${prev.id}`}
             class="group p-4 gap-3 flex items-center border rounded-lg hover:bg-black/5 dark:hover:bg-white/10 border-black/15 dark:border-white/20 blend"
           >
             <div class="order-2 w-full h-full group-hover:text-black dark:group-hover:text-white blend">
@@ -109,7 +107,7 @@ const next = index + 1 < items.length ? items[index + 1] : null
       {
         next && (
           <a
-            href={`/${next.collection}/${next.slug}`}
+            href={`/${next.collection}/${next.id}`}
             class="sm:col-start-2 group p-4 gap-3 flex items-center border rounded-lg hover:bg-black/5 dark:hover:bg-white/10 border-black/15 dark:border-white/20 transition-colors duration-300 ease-in-out"
           >
             <div class="w-full h-full text-right group-hover:text-black dark:group-hover:text-white blend">

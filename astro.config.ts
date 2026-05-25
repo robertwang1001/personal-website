@@ -7,7 +7,7 @@ import { defineConfig } from 'astro/config'
 import rehypeExternalLinks from 'rehype-external-links'
 
 export default defineConfig({
-  site: 'https://glorywong.com',
+  site: 'https://robertwang.langfast.com',
 
   prefetch: {
     defaultStrategy: 'viewport',
@@ -40,5 +40,9 @@ export default defineConfig({
 
   vite: {
     plugins: [tailwindcss()],
+  },
+
+  server: {
+    port: 3000,
   },
 })
