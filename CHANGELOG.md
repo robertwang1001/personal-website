@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.3](https://github.com/robertwang1001/personal-website/compare/v2.3.2...v2.3.3) (2026-10-02)
+
+
+### Bug Fixes
+
+* **deps:** update all non-major dependencies ([#117](https://github.com/robertwang1001/personal-website/issues/117)) ([6132136](https://github.com/robertwang1001/personal-website/commit/6132136f304765f3754c7b5ac534d18c7447e703))
+
 ## [2.3.2](https://github.com/robertwang1001/personal-website/compare/v2.3.1...v2.3.2) (2026-05-25)
 
 
