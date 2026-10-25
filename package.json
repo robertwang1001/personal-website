@@ -50,7 +50,7 @@
     "@antfu/eslint-config": "^9.5.1",
     "@commitlint/cli": "^21.2.4",
     "@commitlint/config-conventional": "^21.2.4",
-    "@vitest/coverage-v8": "^4.1.12",
+    "@vitest/coverage-v8": "^5.0.5",
     "eslint": "^10.13.0",
     "eslint-plugin-astro": "^1.7.0",
     "happy-dom": "^20.14.6",
@@ -59,7 +59,7 @@
     "tailwind-merge": "^3.7.0",
     "tailwindcss": "^4.3.3",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.12"
+    "vitest": "^5.0.5"
   },
   "simple-git-hooks": {
     "commit-msg": "pnpm commitlint --edit ${1}",
