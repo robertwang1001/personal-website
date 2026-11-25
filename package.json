@@ -3,7 +3,7 @@
   "type": "module",
   "version": "2.3.2",
   "private": true,
-  "packageManager": "pnpm@11.28.7+sha512.2161a30a2dc64b0c0f09786496fbce5f061be96b8ff11f0bc98e6bc675e0074ceb225b9197a278f2f171e6c9fb971bd1df8932e5bc31053baccdd52b15a1ae26",
+  "packageManager": "pnpm@12.23.0+sha512.02da94ffaf133f46074322afe552f90d40b5f71ae259aefbccdacc5085b1d617e98d65e0131f5748b9b67445978ee5055d7d59a473f1eef0d504854fefcd5975",
   "description": "Personal website",
   "author": {
     "name": "Robert Wang",
